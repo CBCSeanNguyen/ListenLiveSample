@@ -47,7 +47,7 @@ public class LiveFragment extends Fragment {
                 mLiveRecyclerView.setVisibility(View.VISIBLE);
             }
         });
-        mLiveViewModel.insert();
+        mLiveViewModel.insertLiveStreams();
 
         mLoadingBar = (ProgressBar) rootView.findViewById(R.id.pb_live_load);
         mLoadingBar.setVisibility(View.VISIBLE);

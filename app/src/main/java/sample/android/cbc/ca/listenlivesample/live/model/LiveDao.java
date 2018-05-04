@@ -12,7 +12,7 @@ import java.util.List;
 public interface LiveDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(List<Live> liveData);
+    void insertLiveStreams(List<Live> liveData);
 
     @Query("DELETE FROM live_table")
     void deleteAll();

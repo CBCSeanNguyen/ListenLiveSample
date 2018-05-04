@@ -25,7 +25,11 @@ public class LiveViewModel extends AndroidViewModel {
         return mAllStreams;
     }
 
-    public void insert() {
-        mRepository.insert();
+    public LiveData<List<Live>> getStreamList(int networkID) {
+        return mRepository.getStreamList(networkID);
+    }
+
+    public void insertLiveStreams() {
+        mRepository.insertLiveStreams();
     }
 }

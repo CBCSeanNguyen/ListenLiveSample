@@ -64,7 +64,6 @@ public class LiveJSONHandler {
             Log.e(TAG, "IOException: " + e.getMessage());
         }
 
-
         return null;
     }
 }

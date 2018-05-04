@@ -30,7 +30,11 @@ public class LiveRepository {
         return mLiveData;
     }
 
-    public void insert() {
+    public LiveData<List<Live>> getStreamList(int networkID) {
+        return mLiveDao.getLiveStreams(networkID);
+    }
+
+    public void insertLiveStreams() {
         String url = "http://templisten.primeprojection.com:4000/networks";
         new InsertAsyncTask(mLiveDao).execute(url);
     }
@@ -51,7 +55,7 @@ public class LiveRepository {
                 InputStream is = Network.downloadStream(url);
                 List<Live> liveData = LiveJSONHandler.parseLiveJsonData(is);
 
-                mAsyncTaskDao.insert(liveData);
+                mAsyncTaskDao.insertLiveStreams(liveData);
             } catch (IOException e) {
                 Log.e(TAG, "Error retrieving data...");
             }

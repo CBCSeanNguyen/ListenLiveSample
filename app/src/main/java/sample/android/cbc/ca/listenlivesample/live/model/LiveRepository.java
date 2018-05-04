@@ -7,7 +7,6 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import sample.android.cbc.ca.listenlivesample.data.LiveRoomDatabase;
@@ -35,7 +34,7 @@ public class LiveRepository {
     }
 
     public void insertLiveStreams() {
-        String url = "http://templisten.primeprojection.com:4000/networks";
+        String url = "http://templisten.primeprojection.com:4000/networks?inline=streams";
         new InsertAsyncTask(mLiveDao).execute(url);
     }
 

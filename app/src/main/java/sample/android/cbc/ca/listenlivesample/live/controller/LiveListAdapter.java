@@ -43,7 +43,7 @@ public class LiveListAdapter extends RecyclerView.Adapter<LiveListAdapter.LiveVi
         if (mLiveList != null) {
             Live current = mLiveList.get(position);
 
-            holder.liveItemTitle.setText(current.getFullTitle());
+            holder.liveItemTitle.setText(current.getLiveStream().getStreamFullTitle());
         }
         else {
             holder.liveItemTitle.setText("No Data Yet...");

@@ -26,30 +26,26 @@ public class LiveJSONHandler {
 
             if (liveStreams.isArray()) {
                 for (JsonNode networkStreams : liveStreams) {
-                    String networkID;
-                    String networkName;
-                    String networkLogoUrl;
-                    String streamID;
-                    String streamTitle;
-                    String streamFullTitle;
-                    String streamProvince;
-                    String streamUrl;
 
-                    networkID = networkStreams.at("/id").asText();
-                    networkName = networkStreams.at("/name").asText();
-                    networkLogoUrl = networkStreams.at("/logoUrl").asText();
+                    Log.d(TAG, "stream id: " + networkStreams.at("/id").asText());
+
+                    Network network = new Network(
+                            networkStreams.at("/id").asText(),
+                            networkStreams.at("/name").asText(),
+                            networkStreams.at("/logoUrl").asText());
 
                     JsonNode streamData = networkStreams.at("/streams");
                     if (streamData.isArray()) {
                         for (JsonNode streams : streamData) {
-                            streamID = streams.at("/id").asText();
-                            streamTitle = streams.at("/title").asText();
-                            streamFullTitle = streams.at("/fullTitle").asText();
-                            streamProvince = streams.at("/province").asText();
-                            streamUrl = streams.at("/streamUrl").asText();
 
-                            Live liveData = new Live(networkID, networkName, networkLogoUrl,
-                                    streamID, streamTitle, streamFullTitle, streamProvince, streamUrl);
+                            LiveStream liveStream = new LiveStream(
+                                    streams.at("/id").asText(),
+                                    streams.at("/fullTitle").asText(),
+                                    streams.at("/streamUrl").asText(),
+                                    streams.at("/title").asText(),
+                                    streams.at("/artwork").asText());
+
+                            Live liveData = new Live(liveStream, network);
 
                             liveList.add(liveData);
                         }

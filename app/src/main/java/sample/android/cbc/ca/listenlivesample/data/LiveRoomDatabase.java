@@ -22,7 +22,6 @@ public abstract class LiveRoomDatabase extends RoomDatabase {
             super.onOpen(db);
         }
     };
-
     public static LiveRoomDatabase getDatabase(final Context context) {
         if (sInstance == null) {
             synchronized (LiveRoomDatabase.class) {
